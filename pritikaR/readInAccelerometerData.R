@@ -12,7 +12,7 @@
 #' @param directory the directory (string/character)
 #' @param experiment the experiment we're querying (numeric)
 #' @param userId the user ID we're querying (numeric)
-#' @return A vector of column names matching the keyword
+#' @return 
 #' @export
 
 
@@ -22,8 +22,11 @@ readInAccelerometerData <- function(experiment, userId){
   }  
   
   filePaths <- genFilePath("acc")
-  
+  df <- data.frame()
   for (i in 1:length(filePaths)){
-    bind_cols(read.table(filePaths[i], col.names = c("a_x", "a_y", "a_z")))
+    df_ <- bind_cols(read.table(filePaths[i], col.names = c("a_x", "a_y", "a_z")))
+    df <- rbind(df,df_)
   }
+  df
+  
 }

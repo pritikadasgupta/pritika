@@ -4,17 +4,18 @@
 #' Extracts observation locations from a pre-existing labels dataframe.
 #' Extract observations as dataframes and save as a column in dataframe.
 #' 
+#' Requires "labels" to be in the global environment
+#' 
 #' Source code from: https://blogs.rstudio.com/tensorflow/posts/2018-07-17-activity-detection/
 #' Edits made by Pritika Dasgupta
 #' 
 #' 
 #' @param curExperiment (numeric)
 #' @param curUserId (numeric)
-#' @param labels (data.frame)
 #' @return (data.frame)
 #' @export
 
-loadAccelerometerFileData <- function(curExperiment, curUserId, labels) {
+loadAccelerometerFileData <- function(curExperiment, curUserId) {
   
   # load accelerometer data from file into dataframe
   allData <- readInAccelerometerData(curExperiment, curUserId)
