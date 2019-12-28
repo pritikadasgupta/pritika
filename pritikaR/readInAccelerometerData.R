@@ -1,11 +1,19 @@
-# Read contents of single file to a dataframe with accelerometer data
+#' Read contents of single file to a dataframe with accelerometer data
+#' 
+#' Must be in a text file, with three columns (denoting x, y, z accelerometer measurements)
+#' Example below:
+#' -0.244231611662574 6.13990040832691 -0.478497713025528
+#' 
+#' @param directory the directory (string/character)
+#' @param experiment the experiment we're querying (numeric)
+#' @param userId the user ID we're querying (numeric)
+#' @return A vector of column names matching the keyword
+#' @export
 
-# Must be in format
 
-
-readInAccelerometerData <- function(experiment, userId){
+readInAccelerometerData <- function(directory,experiment, userId){
   genFilePath = function(type) {
-    paste0("RawData/", type, "_exp",experiment, "_user", userId, ".txt")
+    paste0(directory, type, "_exp",experiment, "_user", userId, ".txt")
   }  
   
   bind_cols(
